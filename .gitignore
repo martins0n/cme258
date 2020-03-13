@@ -1,3 +1,5 @@
 .ipynb_checkpoints
 .TODO
 *.o
+.vscode/settings.json
+class/Untitled.ipynb
