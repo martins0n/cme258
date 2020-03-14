@@ -60,8 +60,10 @@ auto power_method_dsym(int matrix_size, double * matrix, int max_iter=1000){
     random_device rd;
     mt19937 gen(rd());
     std::uniform_real_distribution<double> unif(-1., 1.);
-    auto x = (double *) malloc(matrix_size * sizeof(double));
-    auto y = (double *) malloc(matrix_size * sizeof(double));
+    
+    auto x = new double[matrix_size];
+    auto y = new double[matrix_size];
+
     for(int i = 0; i < matrix_size; i++){
         x[i] = unif(gen);
     
@@ -97,7 +99,7 @@ auto power_method_dsym(int matrix_size, double * matrix, int max_iter=1000){
 
     }
 
-    return std::make_tuple(lambda, x);
+    return make_tuple(lambda, x);
 }
 
 int main( int argc, char** argv ){
@@ -120,13 +122,14 @@ int main( int argc, char** argv ){
   int n;
   mat_file >> n;
   
-  double *A = (double *) malloc(n * n * sizeof(double));
+  auto A = new double[n*n];
+
   read_matrix(mat_file, n, A);
 
   double lambda; 
   double * x;
   
-  std::tie(lambda, x) = power_method_dsym(n, A);
+  tie(lambda, x) = power_method_dsym(n, A);
 
   // Print results
   printf("Eigenvalue : %f\n", lambda);
