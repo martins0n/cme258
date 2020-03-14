@@ -137,8 +137,5 @@ int main( int argc, char** argv ){
   for (int i = 0; i < n; i++)
     printf("%f\n", x[i]);;
 
-  // cleanup
-  free(x);
-
   return 0;
 };

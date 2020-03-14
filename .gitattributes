@@ -1,0 +1,6 @@
+
+# doc
+
+*.ipynb linguist-documentation
+*.html linguist-documentation
+*.md linguist-documentation
